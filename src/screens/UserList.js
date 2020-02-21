@@ -10,6 +10,8 @@ import {
     FlatList
 } from 'react-native';
 
+
+
 import UserService from '../services/UserService';
 
 
@@ -56,7 +58,7 @@ export default class UserList extends React.Component {
                             return (
                                 <TouchableOpacity 
                                     onPress={ () => { 
-                                        this.props.navigation.navigate('userDetails', { user : item }); 
+                                        this.props.navigation.navigate('UserDetails', { user : item }); 
                                         }
                                     }
                                     style={[styles.itemContainer, item.gender == 'female' ? styles.female : styles.male]}

@@ -1,7 +1,7 @@
-import  React, { Component } from 'react';
-import { Platform, View, Text, TouchableOpacity, StyleSheet, Image, ActivityIndicator} from 'react-native';
+import React, { Component } from 'react';
+import { Platform, View, Text, TouchableOpacity, StyleSheet, Image, ActivityIndicator } from 'react-native';
 
-export default class userDetails extends React.Component{
+export default class userDetails extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -11,11 +11,12 @@ export default class userDetails extends React.Component{
 
     componentDidMount() {
         this.setState({
-            user: this.props.navigation.state.params.user
+            user: this.props.route.params.user
         });
     }
-    
-    render(){
+
+
+    render() {
         if (this.state.user === null) {
             return (
                 <ActivityIndicator />
@@ -39,29 +40,30 @@ export default class userDetails extends React.Component{
                 </View>
             );
         }
+        
     }
 }
 
 var styles = StyleSheet.create({
-    container:{
-        flex:1,
-        justifyContent:'center',
-        alignItems:'center',
-        flexDirection:'column',
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column',
         //backgroundColor:'blue',
     },
-    itemImage:{
-        height:90,
-        width:90,
-        borderRadius:45,
-        marginVertical:10,
-        
+    itemImage: {
+        height: 90,
+        width: 90,
+        borderRadius: 45,
+        marginVertical: 10,
+
     },
-    itemText:{
-        fontSize:18,
-        textAlign:'center',
-        marginVertical:10,
-        color:'white'
+    itemText: {
+        fontSize: 18,
+        textAlign: 'center',
+        marginVertical: 10,
+        color: 'white'
     },
     male: {
         backgroundColor: 'green'

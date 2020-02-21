@@ -1,29 +1,43 @@
-// In App.js in a new project
+import React from 'react';
 
-import * as React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import {createAppContainer} from 'react-navigation';
-import {createStackNavigator} from 'react-navigation-stack';
 
-//Screens
+//pages
+import TestScreen from './src/screens/TestScreen'
 import HomeScreen from './src/screens/HomeScreen'
 import UserList from './src/screens/UserList'
-import userDetails from './src/screens/UserDetails'
+import UserDetails from './src/screens/UserDetails'
 
 
 
-const AppNavigator = createStackNavigator({
-  
-  homeScreen:{
-    screen: HomeScreen
-  },
-  userList:{
-    screen: UserList
-  },
-  userDetails:{
-    screen: userDetails
-  },
-});
-export default createAppContainer (AppNavigator);
+const Stack = createStackNavigator();
+function reducer(){
+     
+}
+const store = createStore(reducer);
+
+
+const App = () => {
+  return (
+    <>
+      <Provider store={store}>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="home">
+            <Stack.Screen name="testScreen" component={TestScreen} />
+            <Stack.Screen name="home" component={HomeScreen} />
+            <Stack.Screen name="userList" component={UserList} />
+            <Stack.Screen name="UserDetails" component={UserDetails} />
+          </Stack.Navigator>
+        </NavigationContainer>
+
+      </Provider>
+    </>
+  );
+};
+
+export default App;
